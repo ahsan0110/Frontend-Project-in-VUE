@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            MetaTestsTableSeeder::class,
+            PageSeeder::class,
         ]);
 
         // User::factory(10)->create();

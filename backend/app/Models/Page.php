@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $fillable = ['slug', 'title', 'meta_tags'];
+    protected $fillable = [
+        'slug',
+        'title',
+        'description',
+        'meta_tags',
+    ];
 
     protected $casts = [
-        'meta_tags' => 'array',  // Automatically convert JSON to array
+        'meta_tags' => 'array',
     ];
 }

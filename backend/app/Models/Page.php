@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Page extends Model
+{
+    protected $fillable = ['slug', 'title', 'meta_tags'];
+
+    protected $casts = [
+        'meta_tags' => 'array',  // Automatically convert JSON to array
+    ];
+}

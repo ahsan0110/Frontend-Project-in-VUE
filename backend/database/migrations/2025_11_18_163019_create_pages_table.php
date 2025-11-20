@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id();;
             $table->string('title');
-            $table->string('description');
-            $table->text('meta_tags')->nullable();
             $table->timestamps();
         });
     }

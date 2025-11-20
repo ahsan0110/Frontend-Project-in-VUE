@@ -12,7 +12,7 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('page_id');
         $table->string('meta_name');
-        $table->string('meta_content');
+        $table->string('meta_value');
         
         $table->timestamps();
 

@@ -30,12 +30,5 @@ class PageController extends Controller
         Page::destroy($id);
         return response()->json(null, 204);
     }
-
-    public function metaTags($pageId)
-    {
-        $page = Page::with('metaTags')->findOrFail($pageId);
-        return response()->json($page->metaTags);
-    }
-
 }
 

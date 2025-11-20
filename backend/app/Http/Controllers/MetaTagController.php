@@ -12,30 +12,29 @@ class MetaTagController extends Controller
         return MetaTag::where('page_id', $pageId)->get();
     }
 
-    public function store(Request $request, $pageId)
+    public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'value' => 'required|string',
+        $request->validate([
+            'page_id' => 'required',
+            'meta_name' => 'required',
+            'meta_value' => 'required',
         ]);
 
-        $data['page_id'] = $pageId;
-        $meta = MetaTag::create($data);
-        return response()->json($meta);
+        return MetaTag::create($request->all());
     }
-    
+
     public function update(Request $request, $id)
     {
-        $meta = MetaTag::findOrFail($id);
-        $meta->update($request->only(['name', 'value']));
-        return response()->json($meta);
+        $tag = MetaTag::findOrFail($id);
+
+        $tag->update($request->all());
+
+        return $tag;
     }
 
     public function destroy($id)
     {
-        $meta = MetaTag::findOrFail($id);
-        $meta->delete();
+        MetaTag::findOrFail($id)->delete();
         return response()->json(['message' => 'Deleted']);
     }
-
 }

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function index() {
-        return Page::all();
-    }
+    public function index(Request $request)
+{
+    $perPage = $request->query('per_page', 3); 
+    $pages = Page::paginate($perPage); 
+    return response()->json($pages);
+}
 
     public function show($id) {
         return Page::findOrFail($id);

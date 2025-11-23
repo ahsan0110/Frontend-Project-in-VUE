@@ -18,7 +18,6 @@ Route::delete('/meta-tags/{id}', [MetaTagController::class, 'destroy']);
 
 Route::get('/pages-with-meta', [PageMetaController::class, 'index']);
 
-
 Route::post('/admin/login', [AuthController::class, 'login']);
 
 // Protected admin routes

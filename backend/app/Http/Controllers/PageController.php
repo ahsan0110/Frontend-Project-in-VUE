@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index(Request $request)
-{
+{   
+    $search = $request->query('search');
     $perPage = $request->query('per_page', 3); 
-    $pages = Page::paginate($perPage); 
+
+    $query = Page::query();
+
+    if ($search) {
+        $query->where('title', 'LIKE', '%' . $search . '%');
+    }
+    $pages = $query->paginate($perPage); 
     return response()->json($pages);
 }
 
